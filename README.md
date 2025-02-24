@@ -1,6 +1,33 @@
 MCP2210-Library
 ===============
 
+This is a fork of the MCP2210-Library by Kerry Wong.
+And enabled the library to build on Windows 11.
+
+** How to build the library **
+
+   <ul>
+   <li>
+   mkdir build
+   </li>
+   <li>
+   mingw32-make -f Makefile.win clean
+   </li>
+   <li>
+   mingw32-make -f Makefile.win
+   </li>
+   </ul>
+
+   <ul>
+   <li>
+   cd build
+   ./hidusbtest.exe
+   </li>
+   </ul>
+
+
+
+
 This is an open source C/C++ library for Microchip's USB-to-SPI protocol converter chip <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/22288A.pdf">MCP2210</a>. It works under Linux. This library is released under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>
 
 The library uses <a href="https://github.com/signal11/hidapi">signal11's hidapi</a>. You can find the library documentations in the doc directory, or you can view online <a href="http://www.kerrywong.com/mcp2210-library-reference/">here</a>. Some code examples are listed below: 

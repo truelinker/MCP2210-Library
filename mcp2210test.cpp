@@ -18,6 +18,13 @@
 
 #include "mcp2210.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#define usleep(x) Sleep((x)/1000)
+#else
+#include <unistd.h>
+#endif
+
 using namespace std;
 
 /**
@@ -340,7 +347,7 @@ int main(int argc, char** argv) {
      */
     
     //TestGPIO(handle);
-    //TestMCP23S08(handle);
+    TestMCP23S08(handle);
     TestTC77(handle);
     //Test25LC020A(handle);
     //TestMCP3204(handle);

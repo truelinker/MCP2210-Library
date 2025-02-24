@@ -1,0 +1,32 @@
+# Windows Makefile
+
+CC = gcc
+CXX = g++
+CFLAGS = -I. -DWIN32
+CXXFLAGS = -I. -DWIN32
+LIBS = -lsetupapi
+
+BUILD_DIR = build
+CPP_SRCS = mcp2210test.cpp mcp2210.cpp
+C_SRCS = hid.c
+OBJS = $(CPP_SRCS:%.cpp=$(BUILD_DIR)/%.o) $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
+TARGET = $(BUILD_DIR)/hidusbtest.exe
+
+all: $(BUILD_DIR) $(TARGET)
+
+$(BUILD_DIR):
+	if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+
+$(TARGET): $(OBJS)
+	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)
+
+$(BUILD_DIR)/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	if exist $(BUILD_DIR) rmdir /s /q $(BUILD_DIR)
+
+.PHONY: all clean 
